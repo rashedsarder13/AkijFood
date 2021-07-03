@@ -1,0 +1,44 @@
+﻿@using AkijFoodProjectIntern.Models;
+@model IEnumerable<tblColdDrinks>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Table Cold Drinks</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info">&nbsp; Add a Product</a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>Cold Drinks Id</th>
+            <th>
+                @Html.DisplayNameFor(expression: C => C.strColdDrinksName)
+            </th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.intColdDrinksId</td>
+                <td>@item.strColdDrinksName</td>
+                <td>@item.numQuantity</td>
+                <td>@item.numUnitPrice</td>
+
+                <td>
+                    <partial name="_ButtonPartial" model="@item.intColdDrinksId">
+                </td>
+            </tr>
+        }
+    </table>
+</div>
